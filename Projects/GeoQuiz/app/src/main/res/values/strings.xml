@@ -14,4 +14,6 @@
     <string name = "false_button">
         False
     </string>
+    <string name = "correct_toast">Correct!</string>
+    <string name = "incorrect_toast">Incorrect!</string>
 </resources>
