@@ -11,4 +11,20 @@ public class Question {
         this.mtextId = textResId;
         this.mtrueAnswer = answerTrue;
     }
+
+    public int getMtextId() {
+        return mtextId;
+    }
+
+    public boolean isMtrueAnswer() {
+        return mtrueAnswer;
+    }
+
+    public void setMtrueAnswer(boolean mtrueAnswer) {
+        this.mtrueAnswer = mtrueAnswer;
+    }
+
+    public void setMtextId(int mtextId) {
+        this.mtextId = mtextId;
+    }
 }
