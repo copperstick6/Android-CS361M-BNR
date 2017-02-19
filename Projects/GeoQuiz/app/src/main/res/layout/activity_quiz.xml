@@ -6,10 +6,10 @@
     >
     <!-- creating the question TextView !-->
     <TextView
+        android:id="@+id/question_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="24dp"
-        android:text="@string/question_text"
         />
 
     <!-- Changing the LinearLayout to order the buttons horizontally !-->
@@ -32,7 +32,12 @@
             android:layout_height="wrap_content"
             android:text="@string/false_button"
         />
-
+        <Button
+            android:id = "@+id/next_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/false_button"
+            />
     </LinearLayout>
 
 
