@@ -27,13 +27,12 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
-        int question = questionBank[mCurIndex].getMtextId();
-        mQuestionTextView.setText(question);
+
         trueButton = (Button) findViewById(R.id.true_button);
         trueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(QuizActivity.this, R.string.correct_toast, Toast.LENGTH_SHORT).show();
+                checkAnswer(true);
 
 
             }
@@ -43,8 +42,7 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 mCurIndex= (mCurIndex + 1) % questionBank.length;
-                int question = questionBank[mCurIndex].getMtextId();
-                mQuestionTextView.setText(question);
+                updateQuestion();
 
             }
         });
@@ -53,11 +51,25 @@ public class QuizActivity extends AppCompatActivity {
         falseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(QuizActivity.this, R.string.incorrect_toast, Toast.LENGTH_SHORT).show();
+                checkAnswer(false);
 
 
             }
         });
+        updateQuestion();
     }
-
+    private void updateQuestion(){
+        int question = questionBank[mCurIndex].getMtextId();
+        mQuestionTextView.setText(question);
+    }
+    private void checkAnswer(boolean userPressedTrue){
+        boolean answerIsTrue = questionBank[mCurIndex].isMtrueAnswer();
+        int messageResId = 0;
+        if(userPressedTrue == answerIsTrue){
+            messageResId = R.string.correct_toast;
+        }
+        else
+            messageResId = R.string.incorrect_toast;
+        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
+    }
 }
