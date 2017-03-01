@@ -19,8 +19,6 @@ public class QuizActivity extends AppCompatActivity {
                                                     new Question(R.string.question_americas, true),
                                                     new Question(R.string.question_asia, true)};
     private int mCurIndex = 0;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +31,7 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkAnswer(true);
+                updateQuestion();
 
 
             }
@@ -41,7 +40,6 @@ public class QuizActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                mCurIndex= (mCurIndex + 1) % questionBank.length;
                 updateQuestion();
 
             }
@@ -52,6 +50,7 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkAnswer(false);
+                updateQuestion();
 
 
             }
@@ -59,6 +58,7 @@ public class QuizActivity extends AppCompatActivity {
         updateQuestion();
     }
     private void updateQuestion(){
+        mCurIndex= (mCurIndex + 1) % questionBank.length;
         int question = questionBank[mCurIndex].getMtextId();
         mQuestionTextView.setText(question);
     }
