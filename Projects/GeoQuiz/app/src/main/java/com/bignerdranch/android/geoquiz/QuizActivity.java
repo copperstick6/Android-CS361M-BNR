@@ -15,6 +15,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button nextButton;
     private Button cheatButton;
     private TextView mQuestionTextView;
+    private static final String KEY_INDEX = "index";
     private Question[] questionBank = new Question[]{new Question(R.string.question_oceans, true),
                                                     new Question(R.string.question_africa, false),
                                                     new Question(R.string.question_mideast, false),
@@ -32,12 +33,16 @@ public class QuizActivity extends AppCompatActivity {
            @Override
             public void onClick(View v){
                //start listening
-               //creat enew intent to switch screens
-               Intent i = new Intent(QuizActivity.this, CheatActivity.class);
+               //create new intent to switch screens
+               boolean answerIsTrue = questionBank[mCurIndex].isMtrueAnswer();
+               Intent i = CheatActivity.newIntent(QuizActivity.this, answerIsTrue);
                startActivity(i);
 
            }
         });
+        if (savedInstanceState != null) {
+            mCurIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+        }
         trueButton = (Button) findViewById(R.id.true_button);
         trueButton.setOnClickListener(new View.OnClickListener() {
             @Override
