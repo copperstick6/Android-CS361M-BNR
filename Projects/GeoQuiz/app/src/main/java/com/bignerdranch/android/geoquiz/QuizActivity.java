@@ -6,12 +6,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 
 public class QuizActivity extends AppCompatActivity {
 
     private Button trueButton;
     private Button falseButton;
     private Button nextButton;
+    private Button cheatButton;
     private TextView mQuestionTextView;
     private Question[] questionBank = new Question[]{new Question(R.string.question_oceans, true),
                                                     new Question(R.string.question_africa, false),
@@ -25,7 +27,17 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
+        cheatButton = (Button) findViewById(R.id.cheat_button);
+        cheatButton.setOnClickListener(new View.OnClickListener(){
+           @Override
+            public void onClick(View v){
+               //start listening
+               //creat enew intent to switch screens
+               Intent i = new Intent(QuizActivity.this, CheatActivity.class);
+               startActivity(i);
 
+           }
+        });
         trueButton = (Button) findViewById(R.id.true_button);
         trueButton.setOnClickListener(new View.OnClickListener() {
             @Override
