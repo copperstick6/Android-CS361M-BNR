@@ -7,6 +7,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CheatActivity extends AppCompatActivity {
     private static final String EXTRA_ANSWER_IS_TRUE = "com.bignerdranch.android.geoquiz.answer_is_true";
@@ -21,6 +22,7 @@ public class CheatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cheat);
         mAnswerIsTrue = getIntent().getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false);
         mAnswerTextView = (TextView) findViewById(R.id.answer_text_view);
+        
         mShowAnswer = (Button)findViewById(R.id.show_answer_button);
         mShowAnswer.setOnClickListener(new View.OnClickListener(){
             @Override
